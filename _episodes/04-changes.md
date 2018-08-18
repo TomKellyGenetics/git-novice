@@ -604,7 +604,6 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    git add <directory-with-files>
 >    ~~~
 >    {: .bash}
->
 {: .callout}
 
 To recap, when we want to add changes to our repository,
