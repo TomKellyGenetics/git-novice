@@ -60,7 +60,9 @@ index b36abfd..0848c8d 100644
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
 real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` to refer to the commit one before `HEAD`.
+that by adding `~1` 
+(where "~" is "tilde", pronounced [**til**-d*uh*]) 
+to refer to the commit one before `HEAD`.
 
 ~~~
 $ git diff HEAD~1 mars.txt
@@ -117,7 +119,7 @@ In this way,
 we can build up a chain of commits.
 The most recent end of the chain is referred to as `HEAD`;
 we can refer to previous commits using the `~` notation,
-so `HEAD~1` (pronounced "head minus one")
+so `HEAD~1`
 means "the previous commit",
 while `HEAD~123` goes back 123 commits from where we are now.
 
@@ -287,10 +289,31 @@ $ git checkout HEAD mars.txt
 > to revert `mars.txt` to its state after the commit `f22b25e`. But be careful! 
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with the typing. For example, 
-> if you forget `mars.txt` in that command, Git will tell you that "You are in
-> 'detached HEAD' state." It's "look, but don't touch" here, so you shouldn't
-> make any changes in this state.
-> After investigating your repo's past state, reattach your HEAD with ``git checkout master``
+> if you forget `mars.txt` in the previous command.
+>
+> ~~~
+> $ git checkout f22b25e
+> ~~~
+> {: .bash}
+> ~~~
+> Note: checking out 'f22b25e'.
+>
+> You are in 'detached HEAD' state. You can look around, make experimental
+> changes and commit them, and you can discard any commits you make in this
+> state without impacting any branches by performing another checkout.
+>
+> If you want to create a new branch to retain commits you create, you may
+> do so (now or later) by using -b with the checkout command again. Example:
+>
+>  git checkout -b <new-branch-name>
+>
+> HEAD is now at f22b25e Start notes on Mars as a base
+> ~~~
+> {: .error}
+>
+> The "detached HEAD" is like "look, but don't touch" here,
+> so you shouldn't make any changes in this state.
+> After investigating your repo's past state, reattach your `HEAD` with `git checkout master`.
 {: .callout}
 
 It's important to remember that
@@ -368,7 +391,7 @@ moving backward and forward in time becomes much easier.
 > group repository.  Below are the right steps and explanations for
 > Jennifer to use `git revert`, what is the missing command?
 >
-> 1. ________ # Look at the git history of the project to find the commit ID
+> 1. `________ # Look at the git history of the project to find the commit ID`
 >
 > 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
 >
@@ -381,93 +404,43 @@ moving backward and forward in time becomes much easier.
 
 > ## Understanding Workflow and History
 >
-> What is the output of cat venus.txt at the end of this set of commands?
+> What is the output of the last command in
 >
 > ~~~
 > $ cd planets
-> $ nano venus.txt #input the following text: Venus is beautiful and full of love
+> $ echo "Venus is beautiful and full of love" > venus.txt
 > $ git add venus.txt
-> $ nano venus.txt #add the following text: Venus is too hot to be suitable as a base
+> $ echo "Venus is too hot to be suitable as a base" >> venus.txt
 > $ git commit -m "Comment on Venus as an unsuitable base"
 > $ git checkout HEAD venus.txt
 > $ cat venus.txt #this will print the contents of venus.txt to the screen
 > ~~~
 > {: .bash}
 >
-> 1.
->
-> ~~~
-> Venus is too hot to be suitable as a base
-> ~~~
-> {: .output}
->
-> 2.
->
-> ~~~
-> Venus is beautiful and full of love
-> ~~~
-> {: .output}
->
-> 3.
->
-> ~~~
-> Venus is beautiful and full of love
-> Venus is too hot to be suitable as a base
-> ~~~
-> {: .output}
->
-> 4.
->
-> ~~~
-> Error because you have changed venus.txt without committing the changes
-> ~~~
-> {: .output}
+> 1. ~~~
+>    Venus is too hot to be suitable as a base
+>    ~~~
+>    {: .output}
+> 2. ~~~
+>    Venus is beautiful and full of love
+>    ~~~
+>    {: .output}
+> 3. ~~~
+>    Venus is beautiful and full of love
+>    Venus is too hot to be suitable as a base
+>    ~~~
+>    {: .output}
+> 4. ~~~
+>    Error because you have changed venus.txt without committing the changes
+>    ~~~
+>    {: .output}
 >
 > > ## Solution
 > >
-> > Line by line:
-> > ~~~
-> > $ cd planets
-> > ~~~
-> > {: .bash}
-> > Enters into the 'planets' directory
-> >
-> > ~~~
-> > $ nano venus.txt #input the following text: Venus is beautiful and full of love
-> > ~~~
-> > {: .bash}
-> > We created a new file and wrote a sentence in it, but the file is not tracked by git.  
-> >
-> > ~~~
-> > $ git add venus.txt
-> > ~~~
-> > {: .bash}
-> > Now the file is staged. The changes that have been made to the file until now will be committed in the next commit.
-> >
-> > ~~~
-> > $ nano venus.txt #add the following text: Venus is too hot to be suitable as a base
-> > ~~~
-> > {: .bash}
-> > The file has been modified. The new changes are not staged because we have not added the file.
-> >
-> > ~~~
-> > $ git commit -m "Comment on Venus as an unsuitable base"
-> > ~~~
-> > {: .bash}
-> > The changes that were staged (Venus is beautiful and full of love) have been committed. The changes that were not staged (Venus is too hot to be suitable as a base) have not. Our local working copy is different than the copy in our local repository.
-> >
-> > ~~~
-> > $ git checkout HEAD venus.txt
-> > ~~~
-> > {: .bash}
-> > With checkout we discard the changes in the working directory so that our local copy is exactly the same as our HEAD, the most recent commit.
-> >
-> > ~~~
-> > $ cat venus.txt #this will print the contents of venus.txt to the screen
-> > ~~~
-> > {: .bash}
-> > If we print venus.txt we will get answer 2.
-> >
+> > The answer is 2 because `git add venus.txt` was used only before add the line
+> > `Venus is too hot to be suitable as a base`
+> > which was lost when `git checkout` was executed.
+> > Using the flag `-a` with `git commit` would have prevented the lost.
 > {: .solution}
 {: .challenge}
 

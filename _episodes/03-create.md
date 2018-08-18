@@ -13,21 +13,36 @@ keypoints:
 
 Once Git is configured,
 we can start using it.
-Let's create a directory for our work and then move into that directory:
+
+We will continue with the story of Wolfman and Dracula who are investigating if it
+is possible to send a planetary lander to Mars. 
+
+![motivatingexample](../fig/motivatingexample.png)
+
+
+First, let's create a directory in `Desktop` folder for our work and then move into that directory:
 
 ~~~
+$ cd ~/Desktop
 $ mkdir planets
 $ cd planets
 ~~~
 {: .bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}/reference/#repository)—a place where
+Then we tell Git to make `planets` a [repository]({{ page.root }}/reference#repository)—a place where
 Git can store versions of our files:
 
 ~~~
 $ git init
 ~~~
 {: .bash}
+
+It is important to note that `git init` will create a repository that
+includes subdirectories and their files---there is no need to create
+separate repositories nested within the `planets` repository, whether
+subdirectories are present from the beginning or added later. Also, note
+that the creation of the `planets` directory and its initialization as a
+repository are completely separate processes.
 
 If we use `ls` to show the directory's contents,
 it appears that nothing has changed:
@@ -62,10 +77,6 @@ by asking Git to tell us the status of our project:
 $ git status
 ~~~
 {: .bash}
-
-If you are using a different version of git than I am, then then the exact
-wording of the output might be slightly different.
-
 ~~~
 # On branch master
 #
@@ -75,6 +86,9 @@ nothing to commit (create/copy files and use "git add" to track)
 ~~~
 {: .output}
 
+If you are using a different version of `git`, the exact
+wording of the output might be slightly different.
+
 > ## Places to Create Git Repositories
 >
 > Along with tracking information about planets (the project we have already created), 
@@ -83,7 +97,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > project with the following sequence of commands:
 >
 > ~~~
-> $ cd             # return to home directory
+> $ cd ~/Desktop   # return to Desktop directory
 > $ cd planets     # go into planets directory, which is already a Git repository
 > $ ls -a          # ensure the .git sub-directory is still present in the planets directory
 > $ mkdir moons    # make a sub-directory planets/moons
@@ -104,8 +118,8 @@ nothing to commit (create/copy files and use "git add" to track)
 > > all information about moons, Dracula only needed to add the `moons` sub-directory
 > > to the `planets` directory.
 > > 
-> > Additionally, Git repositories can interfere with each other if they are "nested" in the
-> > directory of another: the outer repository will try to version-control
+> > Additionally, Git repositories can interfere with each other if they are "nested":
+> > the outer repository will try to version-control
 > > the inner repository. Therefore, it's best to create each new Git
 > > repository in a separate directory. To be sure that there is no conflicting
 > > repository in the directory, check the output of `git status`. If it looks
@@ -130,7 +144,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ## Solution -- USE WITH CAUTION!
 > >
 > > To recover from this little mistake, Dracula can just remove the `.git`
-> > folder in the moons subdirectory by running the following command from inside the 'planets' directory:
+> > folder in the moons subdirectory by running the following command from inside the `planets` directory:
 > >
 > > ~~~
 > > $ rm -rf moons/.git
@@ -138,7 +152,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > > {: .bash}
 > >
 > > But be careful! Running this command in the wrong directory, will remove
-> > the entire git-history of a project you might want to keep. Therefore, always check your current directory using the
+> > the entire Git history of a project you might want to keep. Therefore, always check your current directory using the
 > > command `pwd`.
 > {: .solution}
 {: .challenge}
