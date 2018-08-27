@@ -28,13 +28,12 @@ let's make a change to `mars.txt`.
 $ nano mars.txt
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
-An ill-considered change
 ~~~
 {: .output}
 
@@ -43,7 +42,7 @@ Now, let's see what we get.
 ~~~
 $ git diff HEAD mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -54,7 +53,6 @@ index b36abfd..0848c8d 100644
  Cold and dry, but everything is my favorite color
  The two moons may be a problem for Wolfman
  But the Mummy will appreciate the lack of humidity
-+An ill-considered change.
 ~~~
 {: .output}
 
@@ -67,7 +65,7 @@ to refer to the commit one before `HEAD`.
 ~~~
 $ git diff HEAD~1 mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
@@ -76,7 +74,7 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 ~~~
 $ git diff HEAD~2 mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -87,7 +85,6 @@ index df0654a..b36abfd 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
-+An ill-considered change
 ~~~
 {: .output}
 
@@ -96,7 +93,7 @@ We could also use `git show` which shows us what changes we made at an older com
 ~~~
 $ git show HEAD~2 mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
@@ -137,7 +134,7 @@ so let's try this:
 ~~~
 $ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -148,7 +145,6 @@ index df0654a..93a3e13 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
-+An ill-considered change
 ~~~
 {: .output}
 
@@ -159,7 +155,7 @@ so Git lets us use just the first few characters:
 ~~~
 $ git diff f22b25e mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -170,7 +166,6 @@ index df0654a..93a3e13 100644
  Cold and dry, but everything is my favorite color
 +The two moons may be a problem for Wolfman
 +But the Mummy will appreciate the lack of humidity
-+An ill-considered change
 ~~~
 {: .output}
 
@@ -183,7 +178,7 @@ Let's suppose we accidentally overwrite our file:
 $ nano mars.txt
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 We will need to manufacture our own oxygen
@@ -196,7 +191,7 @@ but those changes haven't been staged:
 ~~~
 $ git status
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 On branch master
@@ -217,7 +212,7 @@ by using `git checkout`:
 $ git checkout HEAD mars.txt
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -237,12 +232,12 @@ we can use a commit identifier instead:
 ~~~
 $ git checkout f22b25e mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -252,7 +247,7 @@ Cold and dry, but everything is my favorite color
 ~~~
 $ git status
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 # On branch master
@@ -273,9 +268,9 @@ Again, we can put things back the way they were
 by using `git checkout`:
 
 ~~~
-$ git checkout HEAD mars.txt
+$ git checkout -f master mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 > ## Don't Lose Your HEAD
 >
@@ -284,33 +279,12 @@ $ git checkout HEAD mars.txt
 > ~~~
 > $ git checkout f22b25e mars.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > to revert `mars.txt` to its state after the commit `f22b25e`. But be careful! 
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with the typing. For example, 
 > if you forget `mars.txt` in the previous command.
->
-> ~~~
-> $ git checkout f22b25e
-> ~~~
-> {: .bash}
-> ~~~
-> Note: checking out 'f22b25e'.
->
-> You are in 'detached HEAD' state. You can look around, make experimental
-> changes and commit them, and you can discard any commits you make in this
-> state without impacting any branches by performing another checkout.
->
-> If you want to create a new branch to retain commits you create, you may
-> do so (now or later) by using -b with the checkout command again. Example:
->
->  git checkout -b <new-branch-name>
->
-> HEAD is now at f22b25e Start notes on Mars as a base
-> ~~~
-> {: .error}
->
 > The "detached HEAD" is like "look, but don't touch" here,
 > so you shouldn't make any changes in this state.
 > After investigating your repo's past state, reattach your `HEAD` with `git checkout master`.
@@ -339,7 +313,7 @@ here's how Git works in cartoon form:
 > ~~~
 > (use "git checkout -- <file>..." to discard changes in working directory)
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > As it says,
 > `git checkout` without a version identifier restores files to the state saved in `HEAD`.
@@ -415,25 +389,36 @@ moving backward and forward in time becomes much easier.
 > $ git checkout HEAD venus.txt
 > $ cat venus.txt #this will print the contents of venus.txt to the screen
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
-> 1. ~~~
->    Venus is too hot to be suitable as a base
->    ~~~
->    {: .output}
-> 2. ~~~
->    Venus is beautiful and full of love
->    ~~~
->    {: .output}
-> 3. ~~~
->    Venus is beautiful and full of love
->    Venus is too hot to be suitable as a base
->    ~~~
->    {: .output}
-> 4. ~~~
->    Error because you have changed venus.txt without committing the changes
->    ~~~
->    {: .output}
+> 1. 
+>
+> ~~~
+> Venus is too hot to be suitable as a base
+> ~~~
+> {: .output}
+>
+> 2.
+>
+> ~~~
+> Venus is beautiful and full of love
+> ~~~
+> {: .output}
+>
+> 3.
+>
+> ~~~
+> Venus is beautiful and full of love
+> Venus is too hot to be suitable as a base
+> ~~~
+> {: .output}
+>
+> 4.
+>
+> ~~~
+> Error because you have changed venus.txt without committing the changes
+> ~~~
+> {: .output}
 >
 > > ## Solution
 > >
@@ -478,7 +463,7 @@ moving backward and forward in time becomes much easier.
 > ~~~
 > $ git log mars.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > Unfortunately some of these commit messages are very ambiguous e.g. `update files`.
 > How can you search through these files?
@@ -489,7 +474,7 @@ moving backward and forward in time becomes much easier.
 > ~~~
 > $ git log --patch mars.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > You should get a long list of output, and you should be able to see both commit messages and the difference between each commit.
 >
@@ -498,5 +483,5 @@ moving backward and forward in time becomes much easier.
 > ~~~
 > $ git log --patch HEAD~3 *.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 {: .challenge}

@@ -45,7 +45,7 @@ Initiative](https://opensource.org/licenses) and [Free Software
 Foundation](https://www.gnu.org/licenses/license-list.html) both
 maintain lists of licenses which are good choices.
 
-[This article][software-licensing] provides an excellent overview of
+[This article](https://doi.org/10.1371/journal.pcbi.1002598) provides an excellent overview of
 licensing and licensing options from the perspective of scientists who
 also write code.
 
@@ -76,5 +76,3 @@ thus need to be asked for approval once a license is chosen.
 > - [Jupyter](https://github.com/jupyter), the project behind the web-based Python notebooks we'll be using
 > - [EtherPad](https://github.com/ether/etherpad-lite), a real-time collaborative editor
 {: .challenge}
-
-[software-licensing]: https://doi.org/10.1371/journal.pcbi.1002598

@@ -26,7 +26,7 @@ repository:
 ~~~
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -41,7 +41,7 @@ Let's add a line to one partner's copy only:
 $ nano mars.txt
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -57,7 +57,7 @@ and then push the change to GitHub:
 $ git add mars.txt
 $ git commit -m "Add a line in our home copy"
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 [master 5ae9631] Add a line in our home copy
@@ -68,7 +68,7 @@ $ git commit -m "Add a line in our home copy"
 ~~~
 $ git push origin master
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Counting objects: 5, done.
@@ -89,7 +89,7 @@ make a different change to their copy
 $ nano mars.txt
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -105,7 +105,7 @@ We can commit the change locally:
 $ git add mars.txt
 $ git commit -m "Add a line in my copy"
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 [master 07ebc69] Add a line in my copy
@@ -118,7 +118,7 @@ but Git won't let us push it to GitHub:
 ~~~
 $ git push origin master
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 To https://github.com/vlad/planets.git
@@ -143,7 +143,7 @@ Let's start by pulling:
 ~~~
 $ git pull origin master
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 remote: Counting objects: 5, done.
@@ -158,17 +158,13 @@ Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
 
-The `git pull` command updates the local repository to include those
-changes already included in the remote repository.
-After the changes from remote branch have been fetched, Git detects that changes made to the local copy 
-overlap with those made to the remote repository, and therefore refuses to merge the two versions to
-stop us from trampling on our previous work. The conflict is marked in
-in the affected file:
+The `git pull` detects a conflict.
+The conflict is marked in the affected file:
 
 ~~~
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -198,7 +194,7 @@ Let's replace both so that the file looks like this:
 ~~~
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -216,7 +212,7 @@ and then commit:
 $ git add mars.txt
 $ git status
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 On branch master
@@ -233,7 +229,7 @@ Changes to be committed:
 ~~~
 $ git commit -m "Merge changes from GitHub"
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 [master 2abf2b1] Merge changes from GitHub
@@ -245,7 +241,7 @@ Now we can push our changes to GitHub:
 ~~~
 $ git push origin master
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Counting objects: 10, done.
@@ -265,7 +261,7 @@ when the collaborator who made the first change pulls again:
 ~~~
 $ git pull origin master
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 remote: Counting objects: 10, done.
@@ -286,7 +282,7 @@ We get the merged file:
 ~~~
 $ cat mars.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -346,7 +342,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ head --bytes 1024 /dev/urandom > mars.jpg
 > > $ ls -lh mars.jpg
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > -rw-r--r-- 1 vlad 57095 1.0K Mar  8 20:24 mars.jpg
@@ -362,7 +358,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ git add mars.jpg
 > > $ git commit -m "Add picture of Martian surface"
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > [master 8e4115c] Add picture of Martian surface
@@ -378,7 +374,7 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > $ git push origin master
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > To https://github.com/vlad/planets.git
@@ -397,7 +393,7 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > $ git pull origin master
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > When there is a conflict on an image or other binary file, git prints
 > > a message like this:
@@ -424,6 +420,7 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > warning: Cannot merge binary files: mars.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
 > > ~~~
+> > {: .output}
 > >
 > > Git cannot automatically insert conflict markers into an image as it does
 > > for text files. So, instead of editing the image file, we must check out
@@ -439,7 +436,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ git add mars.jpg
 > > $ git commit -m "Use image of surface instead of sky"
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > [master 21032c3] Use image of surface instead of sky
@@ -454,7 +451,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ git add mars.jpg
 > > $ git commit -m "Use image of sky instead of surface"
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > [master da21b34] Use image of sky instead of surface
@@ -472,7 +469,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ git checkout 439dc8c0 mars.jpg
 > > $ mv mars.jpg mars-sky.jpg
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > Then, remove the old `mars.jpg` and add the two new files:
 > >
@@ -482,7 +479,7 @@ Conflicts can also be minimized with project management strategies:
 > > $ git add mars-sky.jpg
 > > $ git commit -m "Use two images: surface and sky"
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > [master 94ae08c] Use two images: surface and sky

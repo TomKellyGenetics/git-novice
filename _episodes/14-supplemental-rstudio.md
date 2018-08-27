@@ -12,7 +12,7 @@ keypoints:
 
 Version control can be very useful when developing data analysis scripts. For
 that reason, the popular development environment
-[RStudio][rstudio] for the R programming language has built-in
+RStudio for the R programming language has built-in
 integration with Git. While some advanced Git features still require the
 command-line, RStudio has a nice interface for many common Git operations.
 
@@ -129,6 +129,4 @@ file:
 There are many more features in the RStudio Git menu, but these should be
 enough to get you started!
 
-
-[rstudio]: https://www.rstudio.com/
 [rstudio-projects]: https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
