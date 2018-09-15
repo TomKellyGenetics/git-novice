@@ -3,4 +3,4 @@
 	url = https://github.com/swcarpentry-i18n/git-novice-es.git
 [submodule "_locale/ja"]
 	path = _locale/ja
-	url = https://git@github.com:TomKellyGenetics/git-novice-ja.git
+	url = https://github.com:TomKellyGenetics/git-novice-ja.git
