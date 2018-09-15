@@ -24,4 +24,4 @@ Maintainers:
 [koziar_kat]: https://software-carpentry.org/team/#koziar_kat
 [munk_madicken]: https://software-carpentry.org/team/#munk_madicken
 [lesson-example]: https://swcarpentry.github.io/lesson-example
-
+ 
